@@ -119,49 +119,44 @@
 
     
  <script>
-    // Function to extract parameter value from URL
-    function getParameterByName(name, url) {
-        if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, "\\$&");
-        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, " "));
-    }
-
-    // Get the 'freeiptv25' parameter value from the URL
-    var m3u8Link = getParameterByName('freeiptv25');
-
-    // Get the video element by ID
-    var videoElement = document.getElementById("myVideo");
-
-    // Set the source of the video element to the dynamically fetched M3U8 link
-    videoElement.src = m3u8Link;
-
-    // Load the new source
-    videoElement.load();
-
-    setTimeout(videovisible, 3000);
-
-    function videovisible() {
-        document.getElementById('loading').style.display = 'none';
-    }
-
     document.addEventListener("DOMContentLoaded", () => {
-        const player = new Plyr("#myVideo", {});
+        const videoElement = document.getElementById("myVideo");
+        const loadingElement = document.getElementById('loading');
 
-        if (Hls.isSupported()) {
-            var hls = new Hls();
-            hls.loadSource(m3u8Link);
-            hls.attachMedia(videoElement);
-        } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
-            videoElement.src = m3u8Link;
+        // Function to extract parameter value from URL
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
 
-        player.play();
+        // Get the 'freeiptv25' parameter value from the URL
+        var m3u8Link = getParameterByName('freeiptv25');
+
+        // Check if the video element and source are available
+        if (videoElement && m3u8Link) {
+            // Set the source of the video element
+            videoElement.src = m3u8Link;
+
+            // Load and play the video
+            videoElement.load();
+            videoElement.play();
+
+            // Hide the loading element after 3 seconds
+            setTimeout(() => {
+                loadingElement.style.display = 'none';
+            }, 3000);
+        } else {
+            // Display an error message if video source is not available
+            console.error('Error: Video source not available');
+        }
     });
 </script>
+
 
     <script>
         setTimeout(videovisible, 3000)
