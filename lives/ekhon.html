@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>STARPLAY LIVE SPORTS</title>
+    <meta name="robots" content="noindex,nofollow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .jwplayer {
+            position: absolute !important;
+        }
+
+        .jwplayer.jw-flag-aspect-mode {
+            min-height: 100%;
+            max-height: 100%;
+        }
+
+        .jw-logo-container {
+            position: absolute;
+            top: 2%;
+            right: 55%;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://content.jwplatform.com/libraries/IDzF9Zmk.js"></script>
+    <script>
+        jwplayer.defaults = jwDefaults;
+    </script>
+
+    <div id="myPlayer" class="jwplayer jw-reset jw-state-idle" style="width:100%;height:100%;"></div>
+
+    <div id="jwplayerDiv"></div>
+
+    <script type="text/JavaScript" defer>
+        jwplayer("jwplayerDiv").setup({
+            autostart: true,
+            volume: 100,
+            mute: false,
+            pipIcon: "disabled",
+            title: "STARPLAY",
+            logo: {
+                file: "https://imgtr.ee/images/2023/12/26/1ce485d929f0c4b3bdef1810f915a21d.png",
+                hide: false,
+                position: "top-right",
+            },
+            file: "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1704420320/ei/gA-XZePuKtCf3LUP47OWyAw/ip/202.134.10.134/id/smeAzMJPQqk.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr5---sn-gvcp5mp5u5-q5j6.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/spc/UWF9fwAWLhkuCNljUtDq5_nKhmoYlEam0KopcSwbeg/vprv/1/playlist_type/DVR/initcwndbps/595000/mh/dO/mm/44/mn/sn-gvcp5mp5u5-q5j6/ms/lva/mv/m/mvi/5/pl/24/dover/11/pacing/0/keepalive/yes/fexp/24007246/mt/1704398199/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,spc,vprv,playlist_type/sig/AJfQdSswRQIhAI1JM7Pk_z5OH-lZTFLx04tuZBlSPbnj4TLzGfHahHZSAiB0xvV1ltGBqTe0YJcqNuMNYvCSwhDj7-VmerKHGrlYKQ%3D%3D/lsparams/hls_chunk_host,initcwndbps,mh,mm,mn,ms,mv,mvi,pl/lsig/AAO5W4owRgIhAJYrohpa3i_aM0t9qMZLfMD1vwfFFsIyXcj0p8PcAf8qAiEAsIgnSoMogD7zbPrDkEJ_pfogpnzUjZ5vBMcZoBAsELY%3D/playlist/index.m3u8",
+        });
+    </script>
+</body>
+
+</html>
