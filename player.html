@@ -161,12 +161,34 @@
                 videoElement.src = m3u8Link;
             }
 
-            // Add a full-screen button
+            document.addEventListener("DOMContentLoaded", () => {
+            const player = new Plyr("#myVideo", {});
+
+            if (Hls.isSupported()) {
+                var hls = new Hls();
+                hls.loadSource(m3u8Link);
+                hls.attachMedia(videoElement);
+            } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+                videoElement.src = m3u8Link;
+            }
+
+            // Request full-screen when the button is clicked
             const fullScreenButton = document.createElement('button');
             fullScreenButton.type = 'button';
             fullScreenButton.className = 'plyr__control';
-            fullScreenButton.setAttribute('data-plyr', 'fullscreen');
             fullScreenButton.innerHTML = '<svg role="presentation" focusable="false"><use xlink:href="#plyr-enter-fullscreen"></use></svg><span class="plyr__sr-only">Fullscreen</span>';
+            fullScreenButton.addEventListener('click', () => {
+                if (videoElement.requestFullscreen) {
+                    videoElement.requestFullscreen();
+                } else if (videoElement.mozRequestFullScreen) {
+                    videoElement.mozRequestFullScreen();
+                } else if (videoElement.webkitRequestFullscreen) {
+                    videoElement.webkitRequestFullscreen();
+                } else if (videoElement.msRequestFullscreen) {
+                    videoElement.msRequestFullscreen();
+                }
+            });
+
             document.querySelector('.plyr__controls').appendChild(fullScreenButton);
 
             player.play();
