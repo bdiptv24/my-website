@@ -118,7 +118,7 @@
     </video>
 
     
- <script>
+  <script>
         // Function to extract parameter value from URL
         function getParameterByName(name, url) {
             if (!url) url = window.location.href;
@@ -130,7 +130,7 @@
             return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
 
-        // Get the 'freeiptv25' parameter value from the URL
+        // Get the 'varun' parameter value from the URL
         var m3u8Link = getParameterByName('freeiptv25');
 
         // Get the video element by ID
@@ -149,19 +149,6 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            const player = new Plyr("#myVideo", {
-                fullscreen: { enabled: true } // Enable full-screen plugin
-            });
-
-            if (Hls.isSupported()) {
-                var hls = new Hls();
-                hls.loadSource(m3u8Link);
-                hls.attachMedia(videoElement);
-            } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
-                videoElement.src = m3u8Link;
-            }
-
-            document.addEventListener("DOMContentLoaded", () => {
             const player = new Plyr("#myVideo", {});
 
             if (Hls.isSupported()) {
@@ -172,8 +159,10 @@
                 videoElement.src = m3u8Link;
             }
 
-            
+            player.play();
+        });
     </script>
+
 
 </body>
 
