@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.6.2/dist/plyr.css" />
     <script src="https://cdn.jsdelivr.net/npm/plyr@3.6.12/dist/plyr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1.1.4/dist/hls.min.js"></script>
+    <!-- Include Plyr full-screen plugin script -->
+   <script src="https://cdn.plyr.io/3.6.2/plyr.full.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <style>
         html {
@@ -116,50 +118,53 @@
     </video>
 
     
-    <script>
-        // Function to extract parameter value from URL
-        function getParameterByName(name, url) {
-            if (!url) url = window.location.href;
-            name = name.replace(/[\[\]]/g, "\\$&");
-            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
+   <script>
+    // Function to extract parameter value from URL
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
 
-        // Get the 'varun' parameter value from the URL
-        var m3u8Link = getParameterByName('freeiptv25');
+    // Get the 'varun' parameter value from the URL
+    var m3u8Link = getParameterByName('freeiptv25');
 
-        // Get the video element by ID
-        var videoElement = document.getElementById("myVideo");
+    // Get the video element by ID
+    var videoElement = document.getElementById("myVideo");
 
-        // Set the source of the video element to the dynamically fetched M3U8 link
-        videoElement.src = m3u8Link;
+    // Set the source of the video element to the dynamically fetched M3U8 link
+    videoElement.src = m3u8Link;
 
-        // Load the new source
-        videoElement.load();
+    // Load the new source
+    videoElement.load();
 
-        setTimeout(videovisible, 3000);
+    setTimeout(videovisible, 3000);
 
-        function videovisible() {
-            document.getElementById('loading').style.display = 'none';
-        }
+    function videovisible() {
+        document.getElementById('loading').style.display = 'none';
+    }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const player = new Plyr("#myVideo", {});
-
-            if (Hls.isSupported()) {
-                var hls = new Hls();
-                hls.loadSource(m3u8Link);
-                hls.attachMedia(videoElement);
-            } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
-                videoElement.src = m3u8Link;
-            }
-
-            player.play();
+    document.addEventListener("DOMContentLoaded", () => {
+        const player = new Plyr("#myVideo", {
+            fullscreen: { enabled: true } // Enable full-screen plugin
         });
-    </script>
+
+        if (Hls.isSupported()) {
+            var hls = new Hls();
+            hls.loadSource(m3u8Link);
+            hls.attachMedia(videoElement);
+        } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+            videoElement.src = m3u8Link;
+        }
+
+        player.play();
+    });
+</script>
+
 </body>
 
 </html>
