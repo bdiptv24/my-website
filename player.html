@@ -99,7 +99,7 @@
 </head>
 
 <body>
-    <div id="loading" class="loading">
+       <div id="loading" class="loading">
         <div class="loading-text">
             <span class="loading-text-words">S</span>
             <span class="loading-text-words">T</span>
@@ -115,6 +115,8 @@
         <!-- The source tag is initially empty -->
     </video>
 
+    <script src="https://cdn.jsdelivr.net/npm/plyr@3.6.12/dist/plyr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.1.4/dist/hls.min.js"></script>
     <script>
         // Function to extract parameter value from URL
         function getParameterByName(name, url) {
@@ -128,7 +130,7 @@
         }
 
         // Get the 'varun' parameter value from the URL
-        var m3u8Link = getParameterByName('freeiptv25');
+        var m3u8Link = getParameterByName('varun');
 
         // Get the video element by ID
         var videoElement = document.getElementById("myVideo");
@@ -146,30 +148,17 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            const e = document.querySelector("video"),
-                o = {};
+            const player = new Plyr("#myVideo", {});
+
             if (Hls.isSupported()) {
-                var config = {
-                    maxMaxBufferLength: 100,
-                };
-                const t = new Hls(config);
-                t.loadSource(m3u8Link), t.on(Hls.Events.MANIFEST_PARSED, function (n, l) {
-                    const s = t.levels.map(e => e.height);
-                    o.quality = {
-                        default: s[0],
-                        options: s,
-                        forced: !0,
-                        onChange: e => (function (e) {
-                            window.hls.levels.forEach((n, o) => {
-                                n.height === e && (window.hls.currentLevel = o)
-                            })
-                        })(e)
-                    };
-                    new Plyr(e, o)
-                }), t.attachMedia(e), window.hls = t
-            } else {
-                new Plyr(e, o)
+                var hls = new Hls();
+                hls.loadSource(m3u8Link);
+                hls.attachMedia(videoElement);
+            } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+                videoElement.src = m3u8Link;
             }
+
+            player.play();
         });
     </script>
 </body>
