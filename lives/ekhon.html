@@ -83,9 +83,6 @@
         <img src='https://imgtr.ee/images/2023/12/26/1ce485d929f0c4b3bdef1810f915a21d.png' alt='Logo'>
     </div>
     <div id='myElement'>Loading the player...</div>
-    <div id='settingsContainer'>
-        <button onclick="showQualityOptions()">Settings</button>
-    </div>
 
     <script type='text/javascript' src="//embed.vemba.io/jwplayercustom/jwplayer-7.11.0/jwplayer.js"></script>
     <script type='text/javascript'>
@@ -111,16 +108,12 @@
                 position: "top-right",
                 height: "30px",
                 width: "40px",
+            },
+            "controls": true,  // Enable default controls
+            "controlbar": {
+                "autoQualityButton": true  // Enable auto quality button
             }
         });
-
-        function showQualityOptions() {
-            this.player.setConfig({
-                "controlbar": {
-                    "autoQualityButton": true
-                }
-            });
-        }
 
         var plugin = this.player.getPlugin();
         console.log('plugin:', plugin);
