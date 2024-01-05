@@ -15,15 +15,19 @@
             padding: 0;
         }
 
-        #logoContainer {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 999;
+        .jwplayer {
+            position: absolute !important;
         }
 
-        #logoContainer img {
-            max-width: 80px;
+        .jwplayer.jw-flag-aspect-mode {
+            min-height: 100%;
+            max-height: 100%;
+        }
+
+        .jw-logo-container {
+            position: absolute;
+            top: 2%;
+            right: 55%;
         }
 
         @media (min-width: 600px) {
@@ -79,7 +83,7 @@
 </head>
 
 <body>
-    <div id='logoContainer'>
+    <div id='jw-logo-container'>
         <img src='https://imgtr.ee/images/2023/12/26/1ce485d929f0c4b3bdef1810f915a21d.png' alt='Logo'>
     </div>
     <div id='myElement'>Loading the player...</div>
