@@ -1,60 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>STARPLAY LIVE SPORTS</title>
-    <meta name="robots" content="noindex,nofollow">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-
-    <style>
-        body {
-            margin: 0;
-        }
-
-        .jwplayer {
-            position: absolute !important;
-        }
-
-        .jwplayer.jw-flag-aspect-mode {
-            min-height: 100%;
-            max-height: 100%;
-        }
-
-        .jw-logo-container {
-            position: absolute;
-            top: 2%;
-            right: 55%;
-        }
-    </style>
+<html><head>
+<script type="text/javascript" src="//embed.vemba.io/jwplayercustom/jwplayer-7.11.0/jwplayer.js"></script>
 </head>
-
 <body>
-    <script src="https://content.jwplatform.com/libraries/IDzF9Zmk.js"></script>
-    <script>
-        jwplayer.defaults = jwDefaults;
-    </script>
-
-    <div id="myPlayer" class="jwplayer jw-reset jw-state-idle" style="width:100%;height:100%;"></div>
-
-    <div id="jwplayerDiv"></div>
-
-    <script type="text/JavaScript" defer>
-        jwplayer("jwplayerDiv").setup({
-            autostart: true,
-            volume: 100,
-            mute: false,
-            pipIcon: "disabled",
-            title: "STARPLAY",
-            logo: {
-                file: "https://imgtr.ee/images/2023/12/26/1ce485d929f0c4b3bdef1810f915a21d.png",
-                hide: false,
-                position: "top-right",
-            },
-            file: "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1704420320/ei/gA-XZePuKtCf3LUP47OWyAw/ip/202.134.10.134/id/smeAzMJPQqk.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr5---sn-gvcp5mp5u5-q5j6.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/spc/UWF9fwAWLhkuCNljUtDq5_nKhmoYlEam0KopcSwbeg/vprv/1/playlist_type/DVR/initcwndbps/595000/mh/dO/mm/44/mn/sn-gvcp5mp5u5-q5j6/ms/lva/mv/m/mvi/5/pl/24/dover/11/pacing/0/keepalive/yes/fexp/24007246/mt/1704398199/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,spc,vprv,playlist_type/sig/AJfQdSswRQIhAI1JM7Pk_z5OH-lZTFLx04tuZBlSPbnj4TLzGfHahHZSAiB0xvV1ltGBqTe0YJcqNuMNYvCSwhDj7-VmerKHGrlYKQ%3D%3D/lsparams/hls_chunk_host,initcwndbps,mh,mm,mn,ms,mv,mvi,pl/lsig/AAO5W4owRgIhAJYrohpa3i_aM0t9qMZLfMD1vwfFFsIyXcj0p8PcAf8qAiEAsIgnSoMogD7zbPrDkEJ_pfogpnzUjZ5vBMcZoBAsELY%3D/playlist/index.m3u8",
-        });
-    </script>
+<div id='myElement'>Loading the player...</div>
+<script type='text/javascript'>
+  jwplayer.key= "JTGE07Ok+RFyC39Hbk/0sU5pENovRRZIhEzX9Q==";
+</script>
+<script type='text/javascript'>
+  this.player = jwplayer("myElement");
+  this.player.setup({
+    "preload": "auto",
+    "hlshtml": true,
+    "autostart": "true",
+    "primary": "html5",
+    "mute": true,
+    "displaydescription": true,
+    "file": "https://freeiptv25.netlify.app/live/bdix/app/SomoyFHD.m3u8",
+    "title": "The Sahara desert was covered in over a foot of snow",
+    "image": "https://i.vemba.io/images/resize-704135a80c008a775704a4e10cc208ae-aspect-w-540-nocache-1515613021.jpg",
+    "description": "This past Sunday, the Sahara desert looked more like the Rocky Mountains, after it snowed for the fourth time in nearly 40 years. The deep, orange sands of Ain Sefra in Alegeria were blanketed with 16 inches of rare snow, creating a breathtaking scene. The Sahara is one of the driest and hottest place on earth, reaching extreme highs of 122 degrees. Being such an arid climate, any form of precipitation is unusual. But the desert’s cold snap was brought on by a high pressure system in Europe that pushed cold air farther south than usual and into North Africa. While scientists cannot attribute this single weather event to climate change, it is safe to say extreme weather events like this will become more common in the future as the climate changes.",
+    "displaytitle": true,
+    "type": "hls",
+    "advertising": {
+    "autoplayadsmuted": true,
+        "client": "googima",
+        "schedule": {
+        "myAds": {
+            "offset": "00:00:00:000",
+                "tag": "https://search.spotxchange.com/vast/2.0/85394?VPAID=JS&ad_mute=1&content_page_url=https%3A%2F%2Fs.codepen.io%2Fboomerang%2FiFrameKey-770a103a-bf46-64af-6d3e-ac7d3749f21b%2Findex.html&cb=1521573468053&player_width=964&player_height=542&custom[video_ID]=17410774&custom[content_producer]=vice&custom[publisher]=vemba&custom[playlist_ID]=23955&custom[brand_name]=vice-news&custom[domain]=codepen.io&custom[video_duration]=58"
+        }
+    }
+},
+    "plugins": {
+    "//seccdn-gl.imrworldwide.com/novms/jw/ggjw510.js": {
+        "apid": "P45D58435-8587-4B0B-B2FA-2BE7F4AF883E",
+            "sfcode": "dcr",
+            "nsdkv": "511",
+            "apn": "Vemba",
+            "stream_custom_params": {
+            "type": "content",
+                "assetid": 17410774,
+                "isfullepisode": "y",
+                "program": "vice_news",
+                "title": "The Sahara desert was covered in over a foot of snow",
+                "length": 58,
+                "mediaURL": "https://vms.vice.com/v1/feed/57a2328a2d2969123f912c43/video/5a550d4b177dd463fe605d34/streams/hls?token=YA2mQM53KadztOaGlET0IU4BWlSkzkGOpClAzI3ePOng46tEz3CaGBxIznkHn2mr&type=.m3u8",
+                "crossId2": "Vice",
+                "adloadtype": "2",
+                "hasAds": "1"
+        }
+    }
+},
+    "id": "vemba_player_EvpUz"
+});
+  var plugin = this.player.getPlugin();
+  console.log('plugin:',plugin)
+  
+</script>
 </body>
-
 </html>
