@@ -1,39 +1,141 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-    <title>Your HTML Page</title>
-    <!-- Other head elements go here -->
-
-    <script type="text/javascript">
-        function fetchUrlAsBlob(url) {
-            return new Promise((resolve, reject) => {
-                fetch(url)
-                    .then(response => response.blob())
-                    .then(blob => resolve(blob))
-                    .catch(error => reject(error));
-            });
-        }
-
-        // Usage example
-        fetchUrlAsBlob("https://bdsajib112.000webhostapp.com/api/bioscope.php?id=sony-yay-live")
-            .then(blob => {
-                const blobUrl = URL.createObjectURL(blob);
-                console.log("Blob URL:", blobUrl);
-
-                // Use the blob URL as needed, e.g., set it as the source for a video element
-                // videoElement.src = blobUrl;
-            })
-            .catch(error => {
-                console.error('Error fetching URL as Blob:', error);
-            });
-    </script>
-</head>
-<body>
-    <!-- Your HTML content goes here -->
-
-    <!-- Other scripts, styles, and closing body/html tags go here -->
-</body>
-</html>
+<?php
+echo '<!DOCTYPE html>';
+echo '<html lang="en">';
+echo '<head>';
+echo '<title>STARPLAY LIVE SPORTS</title>';
+echo '<meta name="robots" content="noindex,nofollow">';
+echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
+echo '<meta http-equiv="X-UA-Compatible" content="IE=edge">';
+echo '<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">';
+echo '';
+echo '<style>';
+echo 'body,';
+echo 'html {';
+echo 'margin: 0;';
+echo 'padding: 0;';
+echo '}';
+echo '';
+echo '.jwplayer {';
+echo 'position: absolute !important;';
+echo '}';
+echo '';
+echo '.jwplayer.jw-flag-aspect-mode {';
+echo 'min-height: 100%;';
+echo 'max-height: 100%;';
+echo '}';
+echo '';
+echo '.jw-logo-container {';
+echo 'position: absolute;';
+echo 'top: 2%;';
+echo 'right: 55%;';
+echo '}';
+echo '#logoContainer {';
+echo 'position: absolute;';
+echo 'top: 15px;';
+echo 'right: 10px;';
+echo 'z-index: 999;';
+echo '}';
+echo '';
+echo '#logoContainer img {';
+echo 'max-width: 80px;';
+echo '}';
+echo '';
+echo '';
+echo '@media (min-width: 600px) {';
+echo '#myElement {';
+echo 'max-width: 620px;';
+echo 'max-height: 350px;';
+echo 'margin-top: 50px;';
+echo 'margin-left: 5%;';
+echo 'margin-right: auto;';
+echo '}';
+echo '}';
+echo '';
+echo '@media (max-width: 600px) {';
+echo '#myElement {';
+echo 'max-width: 320px;';
+echo 'max-height: 180px;';
+echo 'margin-top: 100px;';
+echo 'margin-left: 5%;';
+echo 'margin-right: auto;';
+echo '}';
+echo '}';
+echo '';
+echo '#myElement {';
+echo 'box-shadow: 0 10px 50px rgba(148, 255, 149, 0.85), 5px 10px 50px rgba(0, 0, 0, 0.65);';
+echo '}';
+echo '';
+echo 'p {';
+echo 'margin-bottom: 50px;';
+echo 'background-color: white;';
+echo 'margin-left: auto;';
+echo 'margin-right: auto;';
+echo 'display: table;';
+echo 'font-family: sans-serif;';
+echo 'font-size: 20px;';
+echo 'color: cornflowerblue;';
+echo '}';
+echo '';
+echo '#settingsContainer {';
+echo 'position: absolute;';
+echo 'bottom: 10px;';
+echo 'right: 10px;';
+echo 'z-index: 999;';
+echo '}';
+echo '';
+echo '#settingsContainer button {';
+echo 'padding: 5px 10px;';
+echo 'background-color: #007bff;';
+echo 'color: white;';
+echo 'border: none;';
+echo 'cursor: pointer;';
+echo '}';
+echo '</style>';
+echo '</head>';
+echo '';
+echo '<body>';
+echo '<div id=\'logoContainer\'>';
+echo '<img src=\'https://imgtr.ee/images/2023/12/26/1ce485d929f0c4b3bdef1810f915a21d.png\' alt=\'Logo\'>';
+echo '</div>';
+echo '<div id=\'myElement\'>Loading the player...</div>';
+echo '';
+echo '';
+echo '<script type=\'text/javascript\' src="//starplay2.netlify.app/player/freeiptv25_v2_jwplayercustom_jwplayer-7.11.0_jwplayer.js"></script>';
+echo '<script type=\'text/javascript\'>';
+echo 'jwplayer.key = "JTGE07Ok+RFyC39Hbk/0sU5pENovRRZIhEzX9Q==";';
+echo '</script>';
+echo '<script type=\'text/javascript\'>';
+echo 'this.player = jwplayer("myElement");';
+echo 'this.player.setup({';
+echo '"preload": "auto",';
+echo '"hlshtml": true,';
+echo '"autostart": true,';
+echo '"primary": "html5",';
+echo '';
+echo '"displaydescription": false,';
+echo '"file": "https://byphdgllyk.gpcdn.net/DeeptoTV/deeptotv-manifest.m3u8",';
+echo '"title": "STAR PLAY",';
+echo '"displaytitle": true,';
+echo '"type": "hls",';
+echo '"id": "vemba_player_EvpUz",';
+echo '';
+echo '"logo": {';
+echo 'file: "",';
+echo 'hide: false,';
+echo 'position: "top-right",';
+echo 'height: "30px",';
+echo 'width: "40px",';
+echo '},';
+echo '"controls": true,  // Enable default controls';
+echo '"controlbar": {';
+echo '"autoQualityButton": true  // Enable auto quality button';
+echo '}';
+echo '});';
+echo '';
+echo 'var plugin = this.player.getPlugin();';
+echo 'console.log(\'plugin:\', plugin);';
+echo '</script>';
+echo '</body>';
+echo '';
+echo '</html>';
+?>
