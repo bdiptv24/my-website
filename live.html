@@ -7,52 +7,40 @@
     <title>Live Player</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/clappr/latest/clappr.css">
     <script src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
+    <style type="text/css" media="screen" charset="utf-8">
+        #live-player {
+            position: fixed !important;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: black;
+        }
+    </style>
 </head>
 <body>
     <div id="live-player"></div>
-
-    <script>
-        window.onload = function() {
+    <script type="text/javascript">
+        window.onload = function () {
+            // Replace 'channels.json' with the actual path to your JSON file
             fetch('channels.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch channels.json');
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(channels => {
-                if (!channels || channels.length === 0) {
-                    console.error('No channels found in the JSON data.');
-                    return;
+                const urlParams = new URLSearchParams(window.location.search);
+                const channelName = urlParams.get('tv');
+                const tvSource = channels[channelName];
+                if (tvSource) {
+                    var player = new Clappr.Player({
+                        source: tvSource,
+                        parentId: '#live-player',
+                        width: '100%',
+                        height: '100%',
+                        autoPlay: true
+                    });
+                } else {
+                    console.error("TV source not provided in the URL parameters or invalid channel name.");
                 }
-
-                channels.forEach(channel => {
-                    fetch(channel.link, {
-                        headers: {
-                            'Cookie': channel.cookie
-                        }
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`Failed to fetch m3u8 for ${channel.name}`);
-                        }
-                        return response.text();
-                    })
-                    .then(m3u8 => {
-                        var player = new Clappr.Player({
-                            source: m3u8,
-                            parentId: '#live-player',
-                            width: '100%',
-                            height: '100%',
-                            autoPlay: true,
-                            watermark: {
-                                image: channel.logo,
-                                position: 'top-right'
-                            }
-                        });
-                    })
-                    .catch(error => console.error('Error:', error));
-                });
             })
             .catch(error => console.error('Error fetching channels:', error));
         }
