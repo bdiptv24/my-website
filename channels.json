@@ -1,4 +1,24 @@
-{
-  "channel1": "https://prod-ent-live-gm.jiocinema.com/hls/live/2099915/hd_akamai_merged_avc_hin_sa20_m1_070224/master.m3u8",
-  "channel2": "https://tvs1.aynaott.com/durontotv/index.m3u8?hdnts=st=1707315481~exp=1707358681~acl=/durontotv/*~data=103.90.200.200-PHONE~hmac=bb02001d70a42dad566118260837fca5a0ba699a54bdf363765c00f94c2cb1e4"
-}
+[
+  {
+    "logo": "https://i.ibb.co/DpvDx3j/20231223-091719-0000.png",
+    "name": "Colors Bangla Cinema",
+    "link": "https://bldcmprod-cdn.toffeelive.com/cdn/live/colors_bangla_cinema/playlist.m3u8",
+    "origin": "https://toffeelive.com",
+    "referrer": "https://toffeelive.com/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
+    "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29tLw:Expires=1703600516:KeyName=prod_linear:Signature=6sR8XlYcm3XLm9GsudjRY7e97AUkl60FD2BKN6Ko1ziKo7Wzb-_hB8rl0vGTku0BCNWtpkxpHqVP3YZUMnwzAQ",
+    "drmScheme": "",
+    "drmLicense": ""
+  },
+  {
+    "logo": "https://i.ibb.co/DpvDx3j/20231223-091719-0000.png",
+    "name": "Discovery Science",
+    "link": "https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_science/playlist.m3u8",
+    "origin": "https://toffeelive.com",
+    "referrer": "https://toffeelive.com/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
+    "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29tLw:Expires=1703600516:KeyName=prod_linear:Signature=6sR8XlYcm3XLm9GsudjRY7e97AUkl60FD2BKN6Ko1ziKo7Wzb-_hB8rl0vGTku0BCNWtpkxpHqVP3YZUMnwzAQ",
+    "drmScheme": "",
+    "drmLicense": ""
+  }
+]
