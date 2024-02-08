@@ -17,29 +17,41 @@
             left: 0;
             background-color: black;
         }
+        .dvr-player-wrapper {
+            background-color: black;
+        }
+        [data-watermark] {
+            min-width: 100px !important; /* Adjust the minimum width */
+            max-width: 350px !important; /* Adjust the maximum width */
+            width: 70% !important; /* Adjust the width percentage */
+            top: 45px !important; /* Adjust the top position */
+            right: -70px !important; /* Adjust the right position */
+        }
     </style>
 </head>
 <body>
     <div id="live-player"></div>
     <script type="text/javascript">
         window.onload = function () {
-            fetch('https://mysite.com/channels.json')
+            fetch('channels.json')
             .then(response => response.json())
             .then(channels => {
                 const urlParams = new URLSearchParams(window.location.search);
-                const channelIndex = urlParams.get('index');
-                
-                if (channelIndex !== null && channelIndex >= 0 && channelIndex < channels.length) {
-                    const channel = channels[channelIndex];
+                const channelName = urlParams.get('tv');
+                const tvSource = channels[channelName];
+                if (tvSource) {
                     var player = new Clappr.Player({
-                        source: channel.link,
+                        source: tvSource,
                         parentId: '#live-player',
                         width: '100%',
                         height: '100%',
-                        autoPlay: true
+                        autoPlayVisibleOnly: 'partial', // Corrected property name
+                        watermark: 'https://i.ibb.co/VMwb7DY/20231223-092825-0000.png',
+                        position: 'top-right',
+                        autoPlay: true,
                     });
                 } else {
-                    console.error("Invalid channel index provided in the URL parameters.");
+                    console.error("TV source not provided in the URL parameters or invalid channel name.");
                 }
             })
             .catch(error => console.error('Error fetching channels:', error));
