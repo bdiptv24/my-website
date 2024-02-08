@@ -23,16 +23,16 @@
     <div id="live-player"></div>
     <script type="text/javascript">
         window.onload = function () {
-            // Replace 'channels.json' with the actual path to your JSON file
             fetch('channels.json')
             .then(response => response.json())
             .then(channels => {
                 const urlParams = new URLSearchParams(window.location.search);
                 const channelName = urlParams.get('tv');
-                const tvSource = channels[channelName];
-                if (tvSource) {
+                const channel = channels.find(ch => ch.name === channelName);
+
+                if (channel) {
                     var player = new Clappr.Player({
-                        source: tvSource,
+                        source: channel.link,
                         parentId: '#live-player',
                         width: '100%',
                         height: '100%',
