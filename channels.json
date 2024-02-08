@@ -1,4 +1,7 @@
 {
   "channel1": "https://prod-ent-live-gm.jiocinema.com/hls/live/2099792/hd_akamai_iosmob_avc_tam_indvseng_test02day02030224/master.m3u8",
-  "channel2": "https://prod-ent-live-gm.jiocinema.com/hls/live/2099915/hd_akamai_merged_avc_hin_sa20_m1_070224/master.m3u8"
+  "channel2": "https://prod-ent-live-gm.jiocinema.com/hls/live/2099915/hd_akamai_merged_avc_hin_sa20_m1_070224/master.m3u8",
+  "channel3": 
+"https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/mazhavilmanorama_nim_https/050522/mazhavilmanorama/playlist.m3u8"
+
 }
