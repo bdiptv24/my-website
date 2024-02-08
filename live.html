@@ -23,14 +23,14 @@
     <div id="live-player"></div>
     <script type="text/javascript">
         window.onload = function () {
-            fetch('channels.json')
+            fetch('https://mysite.com/channels.json')
             .then(response => response.json())
             .then(channels => {
                 const urlParams = new URLSearchParams(window.location.search);
-                const channelName = urlParams.get('tv');
-                const channel = channels.find(ch => ch.name === channelName);
-
-                if (channel) {
+                const channelIndex = urlParams.get('index');
+                
+                if (channelIndex !== null && channelIndex >= 0 && channelIndex < channels.length) {
+                    const channel = channels[channelIndex];
                     var player = new Clappr.Player({
                         source: channel.link,
                         parentId: '#live-player',
@@ -39,7 +39,7 @@
                         autoPlay: true
                     });
                 } else {
-                    console.error("TV source not provided in the URL parameters or invalid channel name.");
+                    console.error("Invalid channel index provided in the URL parameters.");
                 }
             })
             .catch(error => console.error('Error fetching channels:', error));
