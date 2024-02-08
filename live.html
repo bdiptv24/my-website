@@ -7,55 +7,40 @@
     <title>Live Player</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/clappr/latest/clappr.css">
     <script src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
-    <style type="text/css" media="screen" charset="utf-8">
-        #live-player {
-            position: fixed !important;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background-color: black;
-        }
-        .dvr-player-wrapper {
-            background-color: black;
-        }
-        [data-watermark] {
-            min-width: 100px !important; /* Adjust the minimum width */
-            max-width: 350px !important; /* Adjust the maximum width */
-            width: 70% !important; /* Adjust the width percentage */
-            top: 15px !important; /* Adjust the top position */
-            right: -80px !important; /* Adjust the right position */
-        }
-    </style>
 </head>
 <body>
     <div id="live-player"></div>
-    <script type="text/javascript">
-        window.onload = function () {
-            fetch('channels.json')
-            .then(response => response.json())
-            .then(channels => {
-                const urlParams = new URLSearchParams(window.location.search);
-                const channelName = urlParams.get('tv');
-                const tvSource = channels[channelName];
-                if (tvSource) {
+
+    <script>
+        // Fetch the JSON data
+        fetch('channels.json')
+        .then(response => response.json())
+        .then(channels => {
+            // Iterate over each channel
+            channels.forEach(channel => {
+                // Fetch the m3u8 link with cookies
+                fetch(channel.link, {
+                    headers: {
+                        'Cookie': channel.cookie
+                    }
+                })
+                .then(response => response.text())
+                .then(m3u8 => {
+                    // Create a player for the channel
                     var player = new Clappr.Player({
-                        source: tvSource,
+                        source: m3u8,
                         parentId: '#live-player',
                         width: '100%',
                         height: '100%',
-                        autoPlayVisibleOnly: 'partial', // Corrected property name
-                        watermark: 'https://i.ibb.co/VMwb7DY/20231223-092825-0000.png',
-                        position: 'top-right',
                         autoPlay: true,
+                        watermark: channel.logo, // Assuming the logo URL is used as the watermark
+                        position: 'top-right'
                     });
-                } else {
-                    console.error("TV source not provided in the URL parameters or invalid channel name.");
-                }
-            })
-            .catch(error => console.error('Error fetching channels:', error));
-        }
+                })
+                .catch(error => console.error('Error fetching m3u8:', error));
+            });
+        })
+        .catch(error => console.error('Error fetching channels:', error));
     </script>
 </body>
 </html>
