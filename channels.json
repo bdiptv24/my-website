@@ -1,9 +1,13 @@
 {
-  "channel1": "https://prod-ent-live-gm.jiocinema.com/hls/live/2099792/hd_akamai_iosmob_avc_tam_indvseng_test02day02030224/master.m3u8",
-  "channel2": "https://prod-ent-live-gm.jiocinema.com/hls/live/2099915/hd_akamai_merged_avc_hin_sa20_m1_070224/master.m3u8",
-  "channel3": 
-"https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/mazhavilmanorama_nim_https/050522/mazhavilmanorama/playlist.m3u8",
-  "channel4":
-"https://livess.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/rtv-sg.stream/chunks.m3u8"
-
+  "channels": [
+    {
+      "name": "TNT SPORT 1",
+      "logo": "https://image.24hsport.tv/upload/Livetv/tntsport1.png",
+      "group": "UK Channels",
+      "url": "https://wznl.score806.cc/live/uk_bts1/index.m3u8",
+      "referrer": "https://aesport.tv",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+    }
+    // Add more channels if needed
+  ]
 }
