@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clappr Player</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/clappr/latest/clappr.css">
+    <script src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
+</head>
+<body>
+    <div id="player"></div>
+    <script type="text/javascript">
+        window.onload = function () {
+            fetch('channels.json')
+            .then(response => response.json())
+            .then(data => {
+                const channel = data.channels[0]; // Assuming you want to use the first channel
+                const player = new Clappr.Player({
+                    source: channel.url,
+                    parentId: '#player',
+                    width: '100%',
+                    height: '100%',
+                    plugins: [Clappr.VLC],
+                    vlcConfig: {
+                        httpReferrer: channel.referrer,
+                        httpUserAgent: channel.userAgent
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching JSON:', error));
+        }
+    </script>
+</body>
+</html>
