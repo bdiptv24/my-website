@@ -4,7 +4,7 @@
       "name": "TNTSPORT1",
       "logo": "https://image.24hsport.tv/upload/Livetv/tntsport1.png",
       "group": "UK Channels",
-      "url": "https://wznl.score806.cc/live/uk_bts1/index.m3u8",
+      "url": "https://corsproxy.io/?https://wznl.score806.cc/live/uk_bts1/index.m3u8",
       "referrer": "https://aesport.tv",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
     }
