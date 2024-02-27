@@ -1,33 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="robots" content="noindex,nofollow">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clappr Player</title>
+    <title>Live Player</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/clappr/latest/clappr.css">
     <script src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/clappr.level-selector/latest/level-selector.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@clappr/hlsjs-playback@1.0.1/dist/hlsjs-playback.min.js"></script>
+
+    <style type="text/css" media="screen" charset="utf-8">
+        #live-player {
+            position: fixed !important;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: black;
+        }
+        .dvr-player-wrapper {
+            background-color: black;
+        }
+        [data-watermark] {
+            min-width: 100px !important;
+            max-width: 350px !important;
+            width: 70% !important;
+            top: 0px !important;
+            right: -85px !important;
+        }
+    </style>
 </head>
 <body>
-    <div id="player"></div>
+    <div id="live-player"></div>
     <script type="text/javascript">
         window.onload = function () {
-            fetch('channels.json')
-            .then(response => response.json())
-            .then(data => {
-                const channel = data.channels[0]; // Assuming you want to use the first channel
-                const player = new Clappr.Player({
-                    source: channel.url,
-                    parentId: '#player',
-                    width: '100%',
-                    height: '100%',
-                    plugins: [Clappr.VLC],
-                    vlcConfig: {
-                        httpReferrer: channel.referrer,
-                        httpUserAgent: channel.userAgent
+            if (window.self === window.top) {
+                fetch('channels.json')
+                .then(response => response.json())
+                .then(config => {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const channelName = urlParams.get('tv');
+                    const channel = config.channels.find(c => c.name === channelName);
+
+                    if (channel) {
+                        var player = new Clappr.Player({
+                            source: channel.url,
+                            parentId: '#live-player',
+                            width: '100%',
+                            height: '100%',
+                            autoPlayVisibleOnly: 'partial',
+                            watermark: channel.logo,
+                            position: 'top-right',
+                            autoPlay: true,
+                            plugins: [HlsjsPlayback, LevelSelector],
+                            playback: {
+                                hlsjsConfig: {
+                                    xhrSetup: function(xhr, url) {
+                                        xhr.setRequestHeader('Referer', channel.referrer);
+                                        xhr.setRequestHeader('User-Agent', channel.userAgent);
+                                    }
+                                }
+                            }
+                        });
+                    } else {
+                        console.error("Channel not found in the configuration or invalid channel name.");
                     }
-                });
-            })
-            .catch(error => console.error('Error fetching JSON:', error));
+                })
+                .catch(error => console.error('Error fetching channels configuration:', error));
+            }
         }
     </script>
 </body>
