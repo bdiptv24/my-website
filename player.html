@@ -39,7 +39,7 @@
 
     <script type="text/JavaScript" defer>
         window.onload = function () {
-            fetch('ch.json')
+            fetch('channels.json')
             .then(response => response.json())
             .then(channels => {
                 const urlParams = new URLSearchParams(window.location.search);
