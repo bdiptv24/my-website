@@ -4,9 +4,9 @@
       "name": "TNTSPORT1",
       "logo": "",
       "group": "UK Channels",
-      "url": "https://webhdrus.onlinehdhls.ru/lb/premium429/index.m3u8",
-      "http-referrer": "https://weblivehdplay.ru/",
-      "http-user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+      "url": "https://tvs2.aynaott.com/channeli/index.m3u8?hdnts=st=1709545534~exp=1709588734~acl=/channeli/*~data=103.148.74.126-WEB~hmac=6b4e979229654497e68974d0249d2445da523372468984eb9e674ec719ab4a8b",
+      "referrer": "https://watch.aynaott.com/",
+      "user-agent": ""
     }
     
   ]
