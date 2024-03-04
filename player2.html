@@ -39,41 +39,43 @@
 
     <script type="text/JavaScript" defer>
         window.onload = function () {
-            fetch('channels.json')
-            .then(response => response.json())
-            .then(channels => {
-                const urlParams = new URLSearchParams(window.location.search);
-                const channelName = urlParams.get('tv');
-                const m3u8Source = channels[channelName];
-                if (m3u8Source) {
-                    jwplayer("myPlayer").setup({
-                        autostart: true,
-                        volume: "100",
-                        mute: false,
-                        pipIcon: "enabled",
-                        title: "STAR PLAY",
-                        logo: {
-                            file: "https://imgtr.ee/images/2023/12/26/1ce485d929f0c4b3bdef1810f915a21d.png",
-                            hide: "false"
-                        },
-                        file: 'http://starplay.free.nf/proxy.php?url=${encodeURIComponent(m3u8Source)}',
-                        events: {
-                            onBeforePlay: function (event) {
-                                // Set Referer header before playing the video
-                                const refererHeader = "https://watch.aynaott.com/";
-                                event.loadConfig({
-                                    headers: {
-                                        Referer: refererHeader
-                                    }
-                                });
+    fetch('channels.json')
+    .then(response => response.json())
+    .then(channels => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const channelName = urlParams.get('tv');
+        const m3u8Source = channels[channelName];
+        if (m3u8Source) {
+            jwplayer("myPlayer").setup({
+                autostart: true,
+                volume: "100",
+                mute: false,
+                pipIcon: "enabled",
+                title: "STAR PLAY",
+                logo: {
+                    file: "https://imgtr.ee/images/2023/12/26/1ce485d929f0c4b3bdef1810f915a21d.png",
+                    hide: "false"
+                },
+                file: `http://starplay.free.nf/proxy.php?url=${encodeURIComponent(m3u8Source)}`,
+                events: {
+                    onBeforePlay: function (event) {
+                        // Set Referer header before playing the video
+                        const refererHeader = "https://watch.aynaott.com/";
+                        event.loadConfig({
+                            headers: {
+                                Referer: refererHeader
                             }
-                        }
-                    });
-                } else {
-                    console.error("M3U8 source not provided in the URL parameters or invalid channel name.");
+                        });
+                    }
                 }
-            })
-            .catch(error => console.error('Error fetching channels:', error));
+            });
+        } else {
+            console.error("M3U8 source not provided in the URL parameters or invalid channel name.");
+        }
+    })
+    .catch(error => console.error('Error fetching channels:', error));
+};
+
         }
     </script>
 </body>
