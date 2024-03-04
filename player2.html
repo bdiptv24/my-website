@@ -59,8 +59,8 @@
                             playback: {
                                 hlsjsConfig: {
                                     xhrSetup: function(xhr, url) {
-                                        xhr.setRequestHeader('Referer', channel.http-referrer);
-                                        xhr.setRequestHeader('User-Agent', channel.http-user-agent);
+                                        xhr.setRequestHeader('Referer', channel.referrer);
+                                        xhr.setRequestHeader('User-Agent', channel.user-agent);
                                     }
                                 }
                             }
