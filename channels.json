@@ -1,5 +1,5 @@
 {
-  "channel1": "https://mprod-cdn.toffeelive.com/live/match-2/index.m3u8",
+  "channel1": "https://crrosproxy.io/?https://mprod-cdn.toffeelive.com/live/match-2/index.m3u8",
   "channel2": "https://prod-ent-live-gm.jiocinema.com/hls/live/2100297/uhd_akamai_ctv_avc_eng_wpl_s1_m1010324/index.m3u8",
   "channel3": "https://mprod-cdn.toffeelive.com/live/match-1/index.m3u8",
   "channel4": "http://176.119.29.52/live/00:1A:79:17:BD:79/8B83484C00326/48010.m3u8",
