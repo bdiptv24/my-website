@@ -56,7 +56,7 @@
                             file: "https://imgtr.ee/images/2023/12/26/1ce485d929f0c4b3bdef1810f915a21d.png",
                             hide: "false"
                         },
-                        file: m3u8Source,
+                        file: 'http://starplay.free.nf/proxy.php?url=${encodeURIComponent(m3u8Source)}',
                         events: {
                             onBeforePlay: function (event) {
                                 // Set Referer header before playing the video
