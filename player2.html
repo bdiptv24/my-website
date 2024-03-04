@@ -1,74 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
 
-    <title>Star Play | Live Sports</title>
-    <meta name="robots" content="noindex,nofollow">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script type='text/javascript' src="//starplay2.netlify.app/player/freeiptv25_v2_jwplayercustom_jwplayer-7.11.0_jwplayer.js"></script>
+
     <style>
-                body {
-            margin: 0;
+        /* Set the background color of the website to black */
+        body {
+            background-color: black;
+            color: white; /* Set text color to white for better visibility */
         }
 
-        .jwplayer {
-            position: absolute !important;
+        /* Set the player container to 100% width and height */
+        #myElement {
+            width: 100%;
+            height: 100%;
         }
 
-        .jwplayer.jw-flag-aspect-mode {
-            min-height: 100%;
-            max-height: 100%;
-        }
-
-        .jw-logo-container {
-            position: absolute;
-            top: 2%;
-            right: 55%;
+        /* Add left and right margins to the wrapper container */
+        #wrapper {
+            margin: 0px; /* Top and bottom margin */
+            margin-left: 0px; /* Left margin */
+            margin-right: 0px; /* Right margin */
         }
     </style>
 </head>
 <body>
-    <script disable-devtool-auto='true' src='https://cdn.jsdelivr.net/npm/disable-devtool' clear-log='true'
-    disable-select='true' disable-copy='true' disable-cut='true' disable-paste='true'></script>
-    <script src="https://content.jwplatform.com/libraries/IDzF9Zmk.js"></script>
-    <script>
-        jwplayer.defaults = jwDefaults;
-    </script>
 
-    <div id="myPlayer" class="jwplayer jw-reset jw-state-idle" style="width: 100%; height: 100%;"></div>
+<div id="wrapper">
+    <div id="myElement"></div>
+</div>
 
-
-    <script type="text/JavaScript" defer>
-        window.onload = function () {
-            fetch('channels.json')
+<script type='text/javascript'>
+    jwplayer.key = "JTGE07Ok+RFyC39Hbk/0sU5pENovRRZIhEzX9Q==";
+</script>
+<script type='text/javascript'>
+    window.onload = function () {
+        fetch('channels.json')  // Adjust the path based on your file structure
             .then(response => response.json())
             .then(channels => {
                 const urlParams = new URLSearchParams(window.location.search);
                 const channelName = urlParams.get('tv');
-                const m3u8Source = channels[channelName];
-                if (m3u8Source) {
-                    jwplayer("myPlayer").setup({
-                        autostart: true,
-                        volume: "100",
-                        mute: false,
-                        pipIcon: "enabled",
-                        title: "STAR PLAY",
-                        logo: {
-                            file: "https://imgtr.ee/images/2023/12/26/1ce485d929f0c4b3bdef1810f915a21d.png",
-                         hide: "false"
-                        },
-                        file: m3u8Source,
-onXhrOpen: function(xhr, url) {
-            xhr.setRequestHeader('referer', 'watch.aynaott.com');
-        }
-                    });
+                const m3u8Link = channels[channelName];
+
+                if (m3u8Link) {
+                    setupPlayer(m3u8Link);
                 } else {
-                    console.error("M3U8 source not provided in the URL parameters or invalid channel name.");
+                    console.error(`M3U8 link not provided in the JSON file for the channel: ${channelName}`);
                 }
             })
-            .catch(error => console.error('Error fetching channels:', error));
-        }
-    </script>
+            .catch(error => console.error('Error fetching JSON file:', error));
+    };
+
+    function setupPlayer(m3u8Link) {
+        this.player = jwplayer("myElement");
+        this.player.setup({
+            "width": "100%",  // Set the player width to 100%
+            "aspectratio": "16:9", // Set the aspect ratio for the player
+            "preload": "auto",
+            "hlshtml": true,
+            "autostart": true,
+            "primary": "html5",
+            "displaydescription": false,
+            "file": m3u8Link,
+            "title": "STAR PLAY",
+            "displaytitle": true,
+            "type": "hls",
+            "id": "vemba_player_EvpUz",
+            "logo": {
+                file: "",
+                hide: false,
+                position: "top-right",
+                height: "30px",
+                width: "40px",
+            },
+            "controls": true,
+            "controlbar": {
+                "autoQualityButton": true
+            },
+            "events": {
+                onXhrOpen: function(xhr, url) {
+                    xhr.setRequestHeader('referer', 'watch.aynaott.com');
+                }
+            }
+        });
+    }
+</script>
+
 </body>
 </html>
