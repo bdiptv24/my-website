@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <title>Star Play | Live Sports</title>
     <meta name="robots" content="noindex,nofollow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <style>
-        body {
+                body {
             margin: 0;
         }
 
@@ -37,6 +38,7 @@
 
     <div id="myPlayer" class="jwplayer jw-reset jw-state-idle" style="width: 100%; height: 100%;"></div>
 
+
     <script type="text/JavaScript" defer>
         window.onload = function () {
             fetch('channels.json')
@@ -54,16 +56,12 @@
                         title: "STAR PLAY",
                         logo: {
                             file: "https://imgtr.ee/images/2023/12/26/1ce485d929f0c4b3bdef1810f915a21d.png",
-                            hide: "false"
+                         hide: "false"
                         },
                         file: m3u8Source,
-                        
-                               onXhrOpen: function(xhr, url) {
-                                        xhr.setRequestHeader('referer, 'https://watch.aynaott.com/');
-                                    }
-                                });
-                            }
-                        }
+onXhrOpen: function(xhr, url) {
+            xhr.setRequestHeader('referer', 'watch.aynaott.com');
+        }
                     });
                 } else {
                     console.error("M3U8 source not provided in the URL parameters or invalid channel name.");
