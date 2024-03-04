@@ -1,7 +1,12 @@
 {
-  "BTV": "https://tvs1.aynaott.com/btvhd/index.m3u8?hdnts=st=1709545791~exp=1709588991~acl=/btvhd/*~data=103.148.74.126-WEB~hmac=6e71cfe8fbabd0e01601d37f6ba1489497a62dc94e47b62bfbccfda94ccd5ae9",
-  "logo": "https://cloudtv.akamaized.net/anyott/images/CMS_BD/e669d5a1-5d1b-4583-9832-aff70bdfd893_180x180_e18f5d1e-879c-44e1-b50f-863b724b665d.png",
-  "name": "BTV",
-  "referer": "https://watch.aynaott.com/",
-  "referrer": "https://watch.aynaott.com/"
+  "channel1": "https://tvs1.aynaott.com/btvhd/index.m3u8?hdnts=st=1709545791~exp=1709588991~acl=/btvhd/*~data=103.148.74.126-WEB~hmac=6e71cfe8fbabd0e01601d37f6ba1489497a62dc94e47b62bfbccfda94ccd5ae9",
+  "channel2": "https://prod-ent-live-gm.jiocinema.com/hls/live/2100297/uhd_akamai_ctv_avc_eng_wpl_s1_m1010324/index.m3u8",
+  "channel3": "https://catowrap.live/mrgamingbtsport1.m3u8",
+  "channel4": "http://176.119.29.52/live/00:1A:79:17:BD:79/8B83484C00326/48010.m3u8",
+  "channel5": "http://213.13.16.138/shls/LIVE$SPORTTV_HD/index.m3u8?device=TVOS_Live&start=LIVE&end=END",
+  "channel6": "http://103.2.153.38/trans1sd/smil:tensports5.smil/chunklist.m3u8",
+  "channel7": "https://corsproxy.io/?https://nayeem-parvez.pw/api-s1b/iptv/hoichoi.m3u8?id=1101&e=.m3u8",
+  "channel8": "https://corsproxy.io/?https://nayeem-parvez.pw/api-s1b/iptv/hoichoi.m3u8?id=1102&e=.m3u8",
+ "channel9": "https://catowrap.live/mrgamingbtsport3.m3u8",
+"channel10": "https://corsproxy.org/?https://starplay2.netlify.app/m3u%2Fdiscoverybengali.m3u8"
 }
