@@ -1,5 +1,5 @@
 {
-  "channel1": "https://tvs1.aynaott.com/btvhd/index.m3u8?hdnts=st=1709545791~exp=1709588991~acl=/btvhd/*~data=103.148.74.126-WEB~hmac=6e71cfe8fbabd0e01601d37f6ba1489497a62dc94e47b62bfbccfda94ccd5ae9",
+  "channel1": "https://corsproxy.io/?https://tvs1.aynaott.com/btvhd/index.m3u8?hdnts=st=1709545791~exp=1709588991~acl=/btvhd/*~data=103.148.74.126-WEB~hmac=6e71cfe8fbabd0e01601d37f6ba1489497a62dc94e47b62bfbccfda94ccd5ae9",
   "channel2": "https://prod-ent-live-gm.jiocinema.com/hls/live/2100297/uhd_akamai_ctv_avc_eng_wpl_s1_m1010324/index.m3u8",
   "channel3": "https://catowrap.live/mrgamingbtsport1.m3u8",
   "channel4": "http://176.119.29.52/live/00:1A:79:17:BD:79/8B83484C00326/48010.m3u8",
