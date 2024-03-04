@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,67 +29,70 @@
         }
     </style>
 </head>
+
 <body>
 
-<div id="wrapper">
-    <div id="myElement"></div>
-</div>
+    <div id="wrapper">
+        <div id="myElement"></div>
+    </div>
 
-<script type='text/javascript'>
-    jwplayer.key = "JTGE07Ok+RFyC39Hbk/0sU5pENovRRZIhEzX9Q==";
-</script>
-<script type='text/javascript'>
-    window.onload = function () {
-        fetch('channels.json')  // Adjust the path based on your file structure
-            .then(response => response.json())
-            .then(channels => {
-                const urlParams = new URLSearchParams(window.location.search);
-                const channelName = urlParams.get('tv');
-                const m3u8Link = channels[channelName];
+    <script type='text/javascript'>
+        jwplayer.key = "JTGE07Ok+RFyC39Hbk/0sU5pENovRRZIhEzX9Q==";
+    </script>
+    <script type='text/javascript'>
+        window.onload = function () {
+            fetch('channels.json') // Adjust the path based on your file structure
+                .then(response => response.json())
+                .then(channels => {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const channelName = urlParams.get('tv');
+                    const m3u8Link = channels[channelName];
 
-                if (m3u8Link) {
-                    setupPlayer(m3u8Link);
-                } else {
-                    console.error(`M3U8 link not provided in the JSON file for the channel: ${channelName}`);
+                    if (m3u8Link) {
+                        setupPlayer(m3u8Link);
+                    } else {
+                        console.error(`M3U8 link not provided in the JSON file for the channel: ${channelName}`);
+                    }
+                })
+                .catch(error => console.error('Error fetching JSON file:', error));
+        };
+
+        function setupPlayer(m3u8Link) {
+            this.player = jwplayer("myElement");
+            this.player.setup({
+                "width": "100%", // Set the player width to 100%
+                "aspectratio": "16:9", // Set the aspect ratio for the player
+                "preload": "auto",
+                "hlshtml": true,
+                "autostart": true,
+                "primary": "html5",
+                "displaydescription": false,
+                "file": m3u8Link,
+                "title": "STAR PLAY",
+                "displaytitle": true,
+                "type": "hls",
+                "id": "vemba_player_EvpUz",
+                "logo": {
+                    file: "",
+                    hide: false,
+                    position: "top-right",
+                    height: "30px",
+                    width: "40px",
+                },
+                "controls": true,
+                "controlbar": {
+                    "autoQualityButton": true
+                },
+                events: {
+                    onXhrOpen: function (xhr, url) {
+                        // Set your cookie value in the 'Cookie' header
+                        xhr.setRequestHeader('Cookie', 'Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9tcHJvZC1jZG4udG9mZmVlbGl2ZS5jb20v:Expires=1709585084:KeyName=prod_live_events:Signature=gDaqMecq2Ol8zgbz7y_UM5qUs_mqphPC344SRJJVexxlrTZ1LNzgOtRE7GQm35Ki_-_s6a1b4_fA5RXNWatEDg');
+                    }
                 }
-            })
-            .catch(error => console.error('Error fetching JSON file:', error));
-    };
-
-    function setupPlayer(m3u8Link) {
-        this.player = jwplayer("myElement");
-        this.player.setup({
-            "width": "100%",  // Set the player width to 100%
-            "aspectratio": "16:9", // Set the aspect ratio for the player
-            "preload": "auto",
-            "hlshtml": true,
-            "autostart": true,
-            "primary": "html5",
-            "displaydescription": false,
-            "file": m3u8Link,
-            "title": "STAR PLAY",
-            "displaytitle": true,
-            "type": "hls",
-            "id": "vemba_player_EvpUz",
-            "logo": {
-                file: "",
-                hide: false,
-                position: "top-right",
-                height: "30px",
-                width: "40px",
-            },
-            "controls": true,
-            "controlbar": {
-                "autoQualityButton": true
-            },
-            "events": {
-                onXhrOpen: function(xhr, url) {
-                    xhr.setRequestHeader('referer', 'watch.aynaott.com');
-                }
-            }
-        });
-    }
-</script>
+            });
+        }
+    </script>
 
 </body>
+
 </html>
